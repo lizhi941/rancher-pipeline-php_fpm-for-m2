@@ -27,10 +27,17 @@ spec:
       labels:
         app: php-fpm
     spec:
+      volumes:
+      - name: magento2-data
+        persistentVolumeClaim:
+                claimName: appdata
       imagePullSecrets:
       - name: pipeline-docker-registry
       containers:
       - name: php-fpm
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        volumeMounts:
+           - name: magento2-data
+             mountPath: "/var/www/magento"
         ports:
         - containerPort: 9000

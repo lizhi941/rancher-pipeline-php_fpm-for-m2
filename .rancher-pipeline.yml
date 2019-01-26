@@ -2,8 +2,8 @@ stages:
 - name: Publish image
   steps:
   - publishImageConfig:
-      dockerfilePath: ./7.0-fpm/Dockerfile
-      buildContext: ./7.0-fpm
+      dockerfilePath: ./7.2-fpm/Dockerfile
+      buildContext: ./7.2-fpm
       tag: php-fpm:${CICD_EXECUTION_SEQUENCE}
 - name: Deploy
   steps:
